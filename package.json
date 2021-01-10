@@ -1,0 +1,11 @@
+{
+    "name": "auth",
+    "license": "MIT",
+    "main": "index.js",
+    "scripts": {
+        "start": "concurrently \"cd backEnd && npm start\" \"cd client && npm start \""
+    },
+    "dependencies": {
+        "concurrently": "^5.3.0"
+    }
+}

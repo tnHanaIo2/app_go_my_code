@@ -1,6 +1,7 @@
 const express = require ("express");
 
 const app = express ();
+const category = require('./routes/admin/category')
 //Middelware
 app.use(express.json())
 
@@ -8,8 +9,6 @@ app.use(express.json())
 const connectDB = require('./config/connectDB');
 const logger = require("./middelwares/logger");
 app.use("/api/auth", logger)
-const passport = require("passport");
-app.use(passport.initialize());
 
 //Cnx the DB
 connectDB();
@@ -17,6 +16,7 @@ connectDB();
 const authRouter= require('./routes/authRouter')
 
 app.use("/api/auth", authRouter);
+app.use("/admin/category", category);
 
 const PORT= 4000 || process.env.PORT
 

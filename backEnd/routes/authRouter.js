@@ -1,8 +1,7 @@
 const express = require("express");
-const { register, login, authaurisation } = require("../controllers/authController");
-const isAuth = require("../middelwares/authentication");
-const { registerRules, validator, loginRules } = require("../middelwares/bodyValidators");
 const router = express.Router();
+const { register, login, authaurisation } = require("../controllers/authController");
+const { registerRules, validator, loginRules } = require("../middelwares/validator");
 const isAuth2 = require("../middelwares/passportSetup") ;
 /**
  * @params POST /api/auth/register
@@ -24,4 +23,5 @@ router.post("/login", loginRules(),validator, login)
  * @access PRIVATE
  */
 router.get("/authUser", isAuth2(), authaurisation)
+
 module.exports = router;
